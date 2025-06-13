@@ -21,3 +21,8 @@ INSERT INTO tb_matricula(numero, data, situacao, id_plano, id_pessoa) VALUES ('2
 INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-06-30', '2025-06-28', 150.00, 1);
 INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-07-30', '2025-07-29', 200.00, 2);
 INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-08-30', '2025-08-25', 250.00, 3);
+
+-- tb_usuario
+INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('fernanda.a', 'abc123', 'ADM', 1);
+INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('mariana.m', 'def456', 'USER', 2);
+INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('marcela.f', 'ghi789', 'USER', 3);
