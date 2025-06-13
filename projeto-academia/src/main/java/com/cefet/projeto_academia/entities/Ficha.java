@@ -5,38 +5,41 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-
 @Entity
-@Table(name = "tb_pessoa")
-public class Pessoa {
-
+@Table(name = "tb_ficha")
+public class Ficha {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String nome;
- 
-    @Column(nullable = false, unique = true)
-    private String cpf;
+    private String data;
 
     @Column(nullable = false)
-    private String endereco;
+    private String descricao;
 
     @Column(nullable = false)
-    private String telefone;
+    private String situacao;
 
-    public Pessoa() {
+    @OneToOne 
+    @JoinColumn(name= " id_pessoa")
+    private Pessoa pessoa;
+    
+    public Ficha(){
+
     }
 
-    public Pessoa(Long id, String nome, String cpf, String endereco, String telefone) {
+    public Ficha(Long id, String data, String descricao, String situacao, Pessoa pessoa) {
         this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.telefone = telefone;
+        this.data = data;
+        this.descricao = descricao;
+        this.situacao = situacao;
+        this.pessoa = pessoa;
     }
 
     public Long getId() {
@@ -47,36 +50,36 @@ public class Pessoa {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getData() {
+        return data;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getSituacao() {
+        return situacao;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     @Override
@@ -95,7 +98,7 @@ public class Pessoa {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Pessoa other = (Pessoa) obj;
+        Ficha other = (Ficha) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -103,5 +106,6 @@ public class Pessoa {
             return false;
         return true;
     }
+
     
 }

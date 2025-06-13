@@ -9,8 +9,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_exercicio")
-
 public class Exercicio {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

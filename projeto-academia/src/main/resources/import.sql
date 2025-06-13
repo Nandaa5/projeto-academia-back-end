@@ -9,3 +9,15 @@ INSERT INTO tb_plano(descricao, parcelas, valor) VALUES ('Plano Premium', 12, 48
 INSERT INTO tb_exercicio(nome) VALUES ('Supino Reto');
 INSERT INTO tb_exercicio(nome) VALUES ('Agachamento Livre');
 INSERT INTO tb_exercicio(nome) VALUES ('Leg Press');
+
+INSERT INTO tb_ficha(data, descricao, situacao, id_pessoa) VALUES ('2025-06-10', 'Ficha de treino para iniciantes', 'Ativa', 1);
+INSERT INTO tb_ficha(data, descricao, situacao, id_pessoa) VALUES ('2025-05-22', 'Treino de hipertrofia - nível intermediário', 'Ativa', 2);
+INSERT INTO tb_ficha(data, descricao, situacao, id_pessoa) VALUES ('2025-04-15', 'Ficha desativada por inatividade', 'Inativa', 3);
+
+INSERT INTO tb_matricula(numero, data, situacao, id_plano, id_pessoa) VALUES ('20250001', '2025-06-12', 'Ativa', 1, 1);
+INSERT INTO tb_matricula(numero, data, situacao, id_plano, id_pessoa) VALUES ('20250002', '2025-06-12', 'Trancada', 2, 2);
+INSERT INTO tb_matricula(numero, data, situacao, id_plano, id_pessoa) VALUES ('20250003', '2025-06-12', 'Cancelada', 3, 3);
+
+INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-06-30', '2025-06-28', 150.00, 1);
+INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-07-30', '2025-07-29', 200.00, 2);
+INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-08-30', '2025-08-25', 250.00, 3);
