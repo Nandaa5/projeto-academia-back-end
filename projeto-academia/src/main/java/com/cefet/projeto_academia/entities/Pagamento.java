@@ -1,5 +1,7 @@
 package com.cefet.projeto_academia.entities;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,10 +20,10 @@ public class Pagamento {
     private Long id;
 
     @Column(name = "data_vencimento", nullable = false)
-    private String dataVencimento;
+    private Date dataVencimento;
 
     @Column(name = "data_pagamento", nullable = false)
-    private String dataPagamento;
+    private Date dataPagamento;
 
     @Column(nullable = false)
     private double valor;
@@ -34,7 +36,7 @@ public class Pagamento {
 
     }
 
-    public Pagamento(Long id, String dataVencimento, String dataPagamento, double valor, Matricula matricula) {
+    public Pagamento(Long id, Date dataVencimento, Date dataPagamento, double valor, Matricula matricula) {
         this.id = id;
         this.dataVencimento = dataVencimento;
         this.dataPagamento = dataPagamento;
@@ -50,19 +52,19 @@ public class Pagamento {
         this.id = id;
     }
 
-    public String getDataVencimento() {
+    public Date getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(String dataVencimento) {
+    public void setDataVencimento(Date dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
 
-    public String getDataPagamento() {
+    public Date getDataPagamento() {
         return dataPagamento;
     }
 
-    public void setDataPagamento(String dataPagamento) {
+    public void setDataPagamento(Date dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 

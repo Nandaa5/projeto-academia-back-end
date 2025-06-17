@@ -10,36 +10,37 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_ficha")
-public class Ficha {
+@Table(name = "tb_ficha_exercicio")
+public class FichaExercicio {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String data;
+    private long series;
 
     @Column(nullable = false)
-    private String descricao;
+    private long repeticoes;
 
-    @Column(nullable = false)
-    private String situacao;
+    @ManyToOne 
+    @JoinColumn(name= "id_exercicio")
+    private Exercicio exercicio;
 
-    @ManyToOne
-    @JoinColumn(name= " id_pessoa")
-    private Pessoa pessoa;
-    
-    public Ficha(){
+    @ManyToOne 
+    @JoinColumn(name= "id_ficha")
+    private Ficha ficha;
+
+    public FichaExercicio(){
 
     }
 
-    public Ficha(Long id, String data, String descricao, String situacao, Pessoa pessoa) {
+    public FichaExercicio(Long id, long series, long repeticoes, Exercicio exercicio, Ficha ficha) {
         this.id = id;
-        this.data = data;
-        this.descricao = descricao;
-        this.situacao = situacao;
-        this.pessoa = pessoa;
+        this.series = series;
+        this.repeticoes = repeticoes;
+        this.exercicio = exercicio;
+        this.ficha = ficha;
     }
 
     public Long getId() {
@@ -50,36 +51,36 @@ public class Ficha {
         this.id = id;
     }
 
-    public String getData() {
-        return data;
+    public long getSeries() {
+        return series;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setSeries(long series) {
+        this.series = series;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public long getRepeticoes() {
+        return repeticoes;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setRepeticoes(long repeticoes) {
+        this.repeticoes = repeticoes;
     }
 
-    public String getSituacao() {
-        return situacao;
+    public Exercicio getExercicio() {
+        return exercicio;
     }
 
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
+    public void setExercicio(Exercicio exercicio) {
+        this.exercicio = exercicio;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Ficha getFicha() {
+        return ficha;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
     }
 
     @Override
@@ -98,7 +99,7 @@ public class Ficha {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Ficha other = (Ficha) obj;
+        FichaExercicio other = (FichaExercicio) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -106,5 +107,6 @@ public class Ficha {
             return false;
         return true;
     }
-    
+
+
 }

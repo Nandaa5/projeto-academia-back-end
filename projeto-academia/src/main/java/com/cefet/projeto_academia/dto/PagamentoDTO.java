@@ -1,13 +1,15 @@
 package com.cefet.projeto_academia.dto;
 
+import java.sql.Date;
+
 import com.cefet.projeto_academia.entities.Matricula;
 import com.cefet.projeto_academia.entities.Pagamento;
 
 
 public class PagamentoDTO {
     private long id;
-    private String dataVencimento;
-    private String dataPagamento;
+    private Date dataVencimento;
+    private Date dataPagamento;
     private double valor;
     private Matricula matricula;
     
@@ -27,11 +29,12 @@ public class PagamentoDTO {
         return id;
     }
 
-    public String getDataVencimento() {
+
+    public Date getDataVencimento() {
         return dataVencimento;
     }
 
-    public String getDataPagamento() {
+    public Date getDataPagamento() {
         return dataPagamento;
     }
 

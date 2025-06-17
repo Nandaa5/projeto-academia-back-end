@@ -1,5 +1,7 @@
 package com.cefet.projeto_academia.entities;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,7 +24,7 @@ public class Matricula {
 
     
     @Column(nullable = false)
-    private String data;
+    private Date data;
 
     @Column(nullable = false)
     private String situacao;
@@ -32,7 +33,7 @@ public class Matricula {
     @JoinColumn(name= " id_plano")
     private Plano plano;
 
-    @OneToOne 
+    @ManyToOne
     @JoinColumn(name= " id_pessoa")
     private Pessoa pessoa;
 
@@ -40,7 +41,7 @@ public class Matricula {
 
     }
 
-    public Matricula(Long id, String numero, String data, String situacao, Plano plano, Pessoa pessoa) {
+    public Matricula(Long id, String numero, Date data, String situacao, Plano plano, Pessoa pessoa) {
         this.id = id;
         this.numero = numero;
         this.data = data;
@@ -65,11 +66,11 @@ public class Matricula {
         this.numero = numero;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

@@ -1,5 +1,7 @@
 package com.cefet.projeto_academia.dto;
 
+import java.sql.Date;
+
 import com.cefet.projeto_academia.entities.Matricula;
 import com.cefet.projeto_academia.entities.Pessoa;
 import com.cefet.projeto_academia.entities.Plano;
@@ -7,7 +9,7 @@ import com.cefet.projeto_academia.entities.Plano;
 public class MatriculaDTO {
     private long id;
     private String numero;
-    private String data;
+    private Date data;
     private String situacao;
     private Plano plano;
     private Pessoa pessoa;
@@ -34,7 +36,7 @@ public class MatriculaDTO {
         return numero;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
