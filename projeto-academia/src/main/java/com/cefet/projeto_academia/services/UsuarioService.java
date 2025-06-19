@@ -1,9 +1,7 @@
 package com.cefet.projeto_academia.services;
 
 import com.cefet.projeto_academia.dto.UsuarioDTO;
-import com.cefet.projeto_academia.entities.Pessoa;
 import com.cefet.projeto_academia.entities.Usuario;
-import com.cefet.projeto_academia.repositories.PessoaRepository;
 import com.cefet.projeto_academia.repositories.UsuarioRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -11,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Random;
 
 @Service
 public class UsuarioService {
@@ -19,46 +16,48 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
-    private PessoaRepository pessoaRepository;
-
+    // Buscar todos
     public List<UsuarioDTO> findAll() {
-        return usuarioRepository.findAll().stream().map(UsuarioDTO::new).toList();
+        List<Usuario> listaUsuarios = usuarioRepository.findAll();
+        return listaUsuarios.stream().map(UsuarioDTO::new).toList();
     }
 
+    // Buscar por ID
     public UsuarioDTO findById(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + id));
         return new UsuarioDTO(usuario);
     }
-//garante que o usuario nao seja alterado
 
-    public UsuarioDTO insert(UsuarioDTO dto) {
-        if (usuarioRepository.existsByLogin(dto.getLogin())) {
-            throw new IllegalArgumentException("Login já existente.");
-        }
-
+    // Inserir Usuário
+    public UsuarioDTO insert(UsuarioDTO usuarioDTO) {
         Usuario usuario = new Usuario();
-        usuario.setLogin(dto.getLogin());
-        usuario.setSenha(gerarSenhaAleatoria());
-        usuario.setTipo(dto.getTipo());
-
-        Pessoa pessoa = pessoaRepository.findById(dto.getIdPessoa())
-            .orElseThrow(() -> new EntityNotFoundException("Pessoa não encontrada."));
-        usuario.setPessoa(pessoa);
-
-        Usuario salvo = usuarioRepository.save(usuario);
-        return new UsuarioDTO(salvo);
+        usuario.setLogin(usuarioDTO.getLogin());
+        usuario.setSenha(usuarioDTO.getSenha());
+        usuario.setTipo(usuarioDTO.getTipo());
+        usuario.setPessoa(usuarioDTO.getPessoa()); // Assumindo relacionamento com Pessoa
+        Usuario usuarioSalvo = usuarioRepository.save(usuario);
+        return new UsuarioDTO(usuarioSalvo);
     }
-//remover por id 
+
+    // Atualizar Usuário
+    public UsuarioDTO update(Long id, UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + id));
+        usuario.setLogin(usuarioDTO.getLogin());
+        usuario.setSenha(usuarioDTO.getSenha());
+        usuario.setTipo(usuarioDTO.getTipo());
+        usuario.setPessoa(usuarioDTO.getPessoa()); // Atualiza pessoa associada, se necessário
+        Usuario usuarioAtualizado = usuarioRepository.save(usuario);
+        return new UsuarioDTO(usuarioAtualizado);
+    }
+
+    // Remover por ID
     public void delete(Long id) {
         if (!usuarioRepository.existsById(id)) {
-            throw new EntityNotFoundException("Usuário não encontrado.");
+            throw new EntityNotFoundException("Usuário não encontrado com ID: " + id);
         }
         usuarioRepository.deleteById(id);
     }
 
-    private String gerarSenhaAleatoria() {
-        return String.valueOf(new Random().nextInt(999999));
-    }
 }

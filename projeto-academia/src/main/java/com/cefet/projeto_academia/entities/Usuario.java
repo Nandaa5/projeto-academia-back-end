@@ -17,7 +17,6 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-   
     @Column(nullable = false, unique = true)
     private String login;
 
@@ -31,7 +30,7 @@ public class Usuario {
     @JoinColumn(name = "id_pessoa", nullable = false)
     private Pessoa pessoa;
 
-     public Usuario() {
+    public Usuario() {
     }
 
     public Usuario(Long id, String login, String senha, String tipo, Pessoa pessoa) {
@@ -41,7 +40,8 @@ public class Usuario {
         this.tipo = tipo;
         this.pessoa = pessoa;
     }
-  public Long getId() {
+
+    public Long getId() {
         return id;
     }
 
@@ -81,7 +81,7 @@ public class Usuario {
         this.pessoa = pessoa;
     }
 
-     @Override
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -130,7 +130,4 @@ public class Usuario {
         return true;
     }
 
-
-   
-   
 }
