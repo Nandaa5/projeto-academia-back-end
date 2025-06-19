@@ -22,16 +22,10 @@ INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) V
 INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-07-30', '2025-07-29', 200.00, 2);
 INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-08-30', '2025-08-25', 250.00, 3);
 
--- tb_usuario
 INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('fernanda.a', 'abc123', 'ADM', 1);
 INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('mariana.m', 'def456', 'USER', 2);
 INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('marcela.f', 'ghi789', 'USER', 3);
 
-
 INSERT INTO tb_ficha_exercicio(series, repeticoes, id_exercicio, id_ficha) VALUES (3, 12, 2, 1);
 INSERT INTO tb_ficha_exercicio(series, repeticoes, id_exercicio, id_ficha) VALUES (4, 10, 1, 2);
-<<<<<<< HEAD
 INSERT INTO tb_ficha_exercicio(series, repeticoes, id_exercicio, id_ficha) VALUES (2, 15, 3, 3);
-=======
-INSERT INTO tb_ficha_exercicio(series, repeticoes, id_exercicio, id_ficha) VALUES (2, 15, 3, 3);
->>>>>>> 7c7f07512c52da4847039895c9d22514fc28ae49
