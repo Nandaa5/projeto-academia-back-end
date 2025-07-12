@@ -22,9 +22,10 @@ INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) V
 INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-07-30', '2025-07-29', 200.00, 2);
 INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-08-30', '2025-08-25', 250.00, 3);
 
-INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('fernanda.a', 'abc123', 'ADM', 1);
-INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('mariana.m', 'def456', 'USER', 2);
-INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('marcela.f', 'ghi789', 'USER', 3);
+-- Substitua os seus inserts de usuário por estes:
+INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('fernanda.a', '$2a$10$ZQDZDXqV/LKQTq13NKJ2aeUmrxV787/U1BSEfXS.pGPu0Sd9CgYX6', 'ADMIN', 1);
+INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('mariana.m', '$2a$10$ZQDZDXqV/LKQTq13NKJ2aeUmrxV787/U1BSEfXS.pGPu0Sd9CgYX6', 'CLIENTE', 2);
+INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('marcela.f', '$2a$10$ZQDZDXqV/LKQTq13NKJ2aeUmrxV787/U1BSEfXS.pGPu0Sd9CgYX6', 'CLIENTE', 3);
 
 INSERT INTO tb_ficha_exercicio(series, repeticoes, id_exercicio, id_ficha) VALUES (3, 12, 2, 1);
 INSERT INTO tb_ficha_exercicio(series, repeticoes, id_exercicio, id_ficha) VALUES (4, 10, 1, 2);

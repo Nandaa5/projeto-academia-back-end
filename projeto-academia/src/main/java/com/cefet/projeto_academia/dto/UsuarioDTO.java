@@ -1,6 +1,7 @@
 package com.cefet.projeto_academia.dto;
 
 
+import com.cefet.projeto_academia.entities.NivelAcesso;
 import com.cefet.projeto_academia.entities.Pessoa;
 import com.cefet.projeto_academia.entities.Usuario;
 
@@ -9,8 +10,9 @@ public class UsuarioDTO {
     private Long id;
     private String login;
     private String senha;
-    private String tipo;
+    private NivelAcesso tipo;
     private Pessoa pessoa;
+
 
     public UsuarioDTO() {
     
@@ -24,6 +26,8 @@ public class UsuarioDTO {
         this.pessoa = usuario.getPessoa();
     }
 
+
+
     public Long getId() {
         return id;
     }
@@ -36,7 +40,7 @@ public class UsuarioDTO {
         return senha;
     }
 
-    public String getTipo() {
+    public NivelAcesso getTipo() {
         return tipo;
     }
 

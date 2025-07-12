@@ -48,6 +48,7 @@ public class UsuarioService {
         usuario.setSenha(usuarioDTO.getSenha());
         usuario.setTipo(usuarioDTO.getTipo());
         usuario.setPessoa(usuarioDTO.getPessoa()); // Atualiza pessoa associada, se necessário
+
         Usuario usuarioAtualizado = usuarioRepository.save(usuario);
         return new UsuarioDTO(usuarioAtualizado);
     }

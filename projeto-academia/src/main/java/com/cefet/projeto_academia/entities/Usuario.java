@@ -2,6 +2,8 @@ package com.cefet.projeto_academia.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,23 +25,32 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
 
-    @Column(nullable = false)
-    private String tipo;
+  
 
     @OneToOne
     @JoinColumn(name = "id_pessoa", nullable = false)
     private Pessoa pessoa;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo", nullable = false)
+    private NivelAcesso tipo;
+
     public Usuario() {
     }
 
-    public Usuario(Long id, String login, String senha, String tipo, Pessoa pessoa) {
+    public Usuario(Long id, String login, String senha, NivelAcesso tipo, Pessoa pessoa) {
         this.id = id;
         this.login = login;
         this.senha = senha;
         this.tipo = tipo;
         this.pessoa = pessoa;
+
     }
+
+   
+
+
+    
 
     public Long getId() {
         return id;
@@ -65,11 +76,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getTipo() {
+    public NivelAcesso getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(NivelAcesso tipo) {
         this.tipo = tipo;
     }
 
@@ -129,5 +140,7 @@ public class Usuario {
             return false;
         return true;
     }
+
+    
 
 }
