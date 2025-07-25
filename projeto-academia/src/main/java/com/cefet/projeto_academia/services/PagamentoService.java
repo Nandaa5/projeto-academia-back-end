@@ -13,7 +13,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class PagamentoService {
-    
+
      @Autowired
      private PagamentoRepository pagamentoRepository;
 
@@ -37,6 +37,13 @@ public class PagamentoService {
         pagamento.setDataPagamento(pagamentoDTO.getDataPagamento());
         pagamento.setValor(pagamentoDTO.getValor());
         pagamento.setMatricula(pagamentoDTO.getMatricula()); // Assumindo relacionamento com Matricula
+
+        if (pagamento.getDataPagamento() != null) {
+            pagamento.setSituacao("PAGO");
+        } else {
+            pagamento.setSituacao("PENDENTE");
+        }
+
         Pagamento pagamentoSalvo = pagamentoRepository.save(pagamento);
         return new PagamentoDTO(pagamentoSalvo);
     }
@@ -49,6 +56,13 @@ public class PagamentoService {
         pagamento.setDataPagamento(pagamentoDTO.getDataPagamento());
         pagamento.setValor(pagamentoDTO.getValor());
         pagamento.setMatricula(pagamentoDTO.getMatricula());
+
+        if (pagamento.getDataPagamento() != null) {
+            pagamento.setSituacao("PAGO");
+        } else {
+            pagamento.setSituacao("PENDENTE");
+        }
+
         Pagamento pagamentoAtualizado = pagamentoRepository.save(pagamento);
         return new PagamentoDTO(pagamentoAtualizado);
     }

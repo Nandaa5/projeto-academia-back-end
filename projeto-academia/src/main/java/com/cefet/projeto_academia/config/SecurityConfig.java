@@ -38,9 +38,18 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/h2-console/**").permitAll()
                 .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-                .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
+              //  .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
                 .requestMatchers(HttpMethod.POST, "/auth").permitAll()
                 
+
+
+                 // Regras de Autorização para usuario
+                .requestMatchers(HttpMethod.GET, "/usuarios").hasAnyRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/usuarios/{id}").hasAnyRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/usuarios").hasAnyRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/usuarios/**").hasAnyRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/usuarios/**").hasRole("ADMIN")
+
                 // Regras de Autorização para Pessoas
                 .requestMatchers(HttpMethod.GET, "/pessoas").hasAnyRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/pessoas/{id}").hasAnyRole("ADMIN", "CLIENTE")

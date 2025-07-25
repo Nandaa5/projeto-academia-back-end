@@ -11,8 +11,9 @@ public class PagamentoDTO {
     private Date dataVencimento;
     private Date dataPagamento;
     private double valor;
+    private String situacao;
     private Matricula matricula;
-    
+
     public PagamentoDTO(){
 
     }
@@ -22,6 +23,7 @@ public class PagamentoDTO {
         this.dataVencimento = pagamento.getDataVencimento();
         this.dataPagamento = pagamento.getDataPagamento();
         this.valor = pagamento.getValor();
+        this.situacao = pagamento.getSituacao();
         this.matricula = pagamento.getMatricula();
     }
 
@@ -42,8 +44,12 @@ public class PagamentoDTO {
         return valor;
     }
 
+    public String getSituacao() {
+        return situacao;
+    }
+
     public Matricula getMatricula() {
         return matricula;
     }
-    
+
 }

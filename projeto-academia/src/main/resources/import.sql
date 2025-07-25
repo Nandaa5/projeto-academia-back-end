@@ -18,10 +18,9 @@ INSERT INTO tb_matricula(numero, data, situacao, id_plano, id_pessoa) VALUES ('2
 INSERT INTO tb_matricula(numero, data, situacao, id_plano, id_pessoa) VALUES ('20250002', '2025-06-12', 'Trancada', 2, 2);
 INSERT INTO tb_matricula(numero, data, situacao, id_plano, id_pessoa) VALUES ('20250003', '2025-06-12', 'Cancelada', 3, 3);
 
-INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-06-30', '2025-06-28', 150.00, 1);
-INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-07-30', '2025-07-29', 200.00, 2);
-INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, id_matricula) VALUES ('2025-08-30', '2025-08-25', 250.00, 3);
-
+INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, situacao, id_matricula) VALUES ('2025-06-30', '2025-06-28', 150.00, 'PAGO', 1);
+INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, situacao, id_matricula) VALUES ('2025-07-30', '2025-07-29', 200.00, 'PAGO', 2);
+INSERT INTO tb_pagamento(data_vencimento, data_pagamento, valor, situacao, id_matricula) VALUES ('2025-08-30', '2025-08-25', 250.00, 'PAGO', 3);
 -- Substitua os seus inserts de usuário por estes:
 INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('fernanda.a', '$2a$10$ZQDZDXqV/LKQTq13NKJ2aeUmrxV787/U1BSEfXS.pGPu0Sd9CgYX6', 'ADMIN', 1);
 INSERT INTO tb_usuario(login, senha, tipo, id_pessoa) VALUES ('mariana.m', '$2a$10$ZQDZDXqV/LKQTq13NKJ2aeUmrxV787/U1BSEfXS.pGPu0Sd9CgYX6', 'CLIENTE', 2);

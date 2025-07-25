@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_pagamento")
 public class Pagamento {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,13 +22,16 @@ public class Pagamento {
     @Column(name = "data_vencimento", nullable = false)
     private Date dataVencimento;
 
-    @Column(name = "data_pagamento", nullable = false)
+    @Column(name = "data_pagamento")
     private Date dataPagamento;
 
     @Column(nullable = false)
     private double valor;
 
-    @ManyToOne 
+    @Column(nullable = false)
+    private String situacao;
+
+    @ManyToOne
     @JoinColumn(name= "id_matricula")
     private Matricula matricula;
 
@@ -36,11 +39,12 @@ public class Pagamento {
 
     }
 
-    public Pagamento(Long id, Date dataVencimento, Date dataPagamento, double valor, Matricula matricula) {
+    public Pagamento(Long id, Date dataVencimento, Date dataPagamento, double valor, String situacao, Matricula matricula) {
         this.id = id;
         this.dataVencimento = dataVencimento;
         this.dataPagamento = dataPagamento;
         this.valor = valor;
+        this.situacao = situacao;
         this.matricula = matricula;
     }
 
@@ -76,6 +80,14 @@ public class Pagamento {
         this.valor = valor;
     }
 
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
     public Matricula getMatricula() {
         return matricula;
     }
@@ -108,7 +120,4 @@ public class Pagamento {
             return false;
         return true;
     }
-
-    
-
 }
