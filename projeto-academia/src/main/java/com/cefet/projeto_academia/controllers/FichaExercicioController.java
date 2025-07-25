@@ -53,4 +53,10 @@ public class FichaExercicioController {
         fichaExercicioService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+
+
+
+
+    
 }

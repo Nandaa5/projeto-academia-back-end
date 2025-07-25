@@ -9,6 +9,7 @@ import com.cefet.projeto_academia.entities.FichaExercicio;
 public interface FichaExercicioRepository extends JpaRepository <FichaExercicio, Long> {
     List<FichaExercicio> findByExercicioId(Long exercicioId);
     List<FichaExercicio> findByFichaId(Long fichaId);
+    
 }
 
 
